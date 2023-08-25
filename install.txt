@@ -1,0 +1,28 @@
+Problem statement 
+Implement an IP based rate limiting feature for an api endpoint . The rate limiting implementation should poses the following features 
+- Capable of identifying whether an incoming IP is malicious or not (This can be acheived by using the virus total api provided in the document below)
+- Keep track of the number of occurance of the IP addresses if they are not malicious
+- Have a threshold value set up for ip address that are not malicious . If the threshold is breached then block the next occurance of the IP .
+- If an Ip is malicious then block it for future occurances and skip threshold detection .
+
+
+## Setting Up fastapi 
+python3 -m venv venv 
+cd venv/bin/ && source activate && cd .././
+pip3 install fastapi
+pip3 install "uvicorn[standard]"
+
+## run to check the server 
+uvicorn template:app --reload    
+
+
+## virus total api key
+
+api-key : key
+
+### Curl command for Virus Total 
+curl --request GET \         
+  --url https://www.virustotal.com/api/v3/ip_addresses/{ip} \
+  --header 'x-apikey: key'
+
+
